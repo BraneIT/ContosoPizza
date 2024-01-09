@@ -1,0 +1,26 @@
+﻿@page
+@model ContosoPizza.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<h1 class="products-label">Our products</h1>
+<div class="product-container">
+    
+@foreach (var item in Model.Product)
+{
+    <div class="product-items-wrapper">
+        
+            <img src="../uploads/@item.ProductPhotoPath" alt="Product Image" class="product-image" />
+            <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+            <p>@Html.DisplayFor(modelItem => item.Price)</p>
+            <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+    </div>
+    }
+</div>
